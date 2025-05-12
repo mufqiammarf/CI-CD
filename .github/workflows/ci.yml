@@ -1,6 +1,10 @@
 name: CI Workflow
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
 
 jobs:
   build:
@@ -12,9 +16,8 @@ jobs:
       - name: Install g++
         run: sudo apt-get update && sudo apt-get install -y g++
 
-      - name: Compile stack.cpp
+      - name: Compile C++ code
         run: g++ stack.cpp -o main
 
-      - name: Run executable
+      - name: Run the program
         run: ./main
-
